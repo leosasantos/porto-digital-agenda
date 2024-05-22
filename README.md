@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Roteiro das aulas
 
-### Cria��o inicial do projeto
+### Criação inicial do projeto
 
 1. Criar projeto do github
 
@@ -32,6 +32,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
   - Procurar no angular.json a propriedade "projects > <name_projeto> > architect > build > options > styles"
   - Adicionar "node_modules/bootstrap/dist/css/bootstrap.css"
+
+### Criando componentes card
+
+1. Criando card
+
+  - ng g c components/card
+  - Copiar código do card do bootstrap (https://getbootstrap.com/docs/4.0/components/card/) para card.component.html
+  - Ajustar código para contatos
+  - Ajustar app.component.html
+
+
 
 
 ## Development server
