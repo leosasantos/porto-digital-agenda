@@ -42,7 +42,41 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - Ajustar código para contatos
   - Ajustar app.component.html
 
+### Input/output em componentes
 
+1. Criar interface contato com nome, telefone, email e tipo
+  - ng g i models/contato
+  - Adicionar os tipos na inteface
+
+    nome: string;
+    telefone: string;
+    email: string;
+    tipo: number; // nacional -> 1 e internacional -> 2
+
+2. Configurando o card para Input
+  - Adicionando "@Input() contato: Contato|null = null;" em card.component.ts
+  - Usando o contato no template (card.component.html)
+
+    <h5 class="card-title">{{ contato?.nome }}</h5>
+    <p class="card-text">Telefone: {{ contato?.telefone }}</p>
+    <p class="card-text">Email: {{ contato?.email }}</p>
+
+3. Usando o novo card com Input
+  - Definindo um contato em app.component.ts
+
+    contato: Contato = {
+      nome: "Fulano de Tal",
+      telefone: "81123456789",
+      email: "fulano@empresa.com.br",
+      tipo: 1
+    }
+
+    getContato(): Contato {
+      return this.contato;
+    }
+
+  - Usando no contato no card em app.component.html
+    <app-card [contato]="contato"></app-card>
 
 
 ## Development server

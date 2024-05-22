@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Contato } from './models/contato';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'porto-digital-agenda';
+
+  contato: Contato = {
+    nome: "Fulano de Tal",
+    telefone: "81123456789",
+    email: "fulano@empresa.com.br",
+    tipo: 1
+  }
+
+  getContato(): Contato {
+    return this.contato;
+  }
 }
