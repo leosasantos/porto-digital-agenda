@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Roteiro das aulas
 
-### Criação inicial do projeto
+### Criação inicial do projeto (branch master)
 
 1. Criar projeto do github
 
@@ -42,7 +42,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - Ajustar código para contatos
   - Ajustar app.component.html
 
-### Input/output em componentes
+### Input/output em componentes (branch input-output-components)
 
 1. Criar interface contato com nome, telefone, email e tipo
   - ng g i models/contato
