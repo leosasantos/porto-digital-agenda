@@ -13,14 +13,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 2. Criar projeto com angular cli
 
-  - ng new porto-digital-agenda --no-standalone --routing --ssr=false
+  - ```ng new porto-digital-agenda --no-standalone --routing --ssr=false```
 
 3. Realizando commit inicial
 
-  - git add .
-  - git commit -m "Initial commit"
-  - git remote add origin <remote_repository_url>
-  - git push -u origin master
+  ```
+  git add .
+  git commit -m "Initial commit"
+  git remote add origin <remote_repository_url>
+  git push -u origin master
+  ```
 
 ### Configurando bootstrap
 
@@ -133,6 +135,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - Removendo o contato
   - Ajustando o função para retornar uma lista
   - Ajustando o template para um valor do array (contatos[2])
+
+2. Criando uma container para listar
+  - Adicionando uma div container no component.html
+
+    <div class="container" style="display: flex"></div>
+
+  - Exibindo mais de um card em app.component.html
+
+    <app-card [contato]="contatos[0]"></app-card>
+    <app-card [contato]="contatos[1]"></app-card>
+    <app-card [contato]="contatos[2]"></app-card>
+
+  - Ajustando style do card para listar
+
+    style="width: 20rem; height: 13rem; margin: 1rem"
+
+
   
 
 ## Development server
