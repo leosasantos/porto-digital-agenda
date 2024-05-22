@@ -22,6 +22,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - git remote add origin <remote_repository_url>
   - git push -u origin master
 
+### Configurando bootstrap
+
+1. Instalar biblioteca
+
+  - npm install bootstrap
+
+2. Configurar css no angular.json
+
+  - Procurar no angular.json a propriedade "projects > <name_projeto> > architect > build > options > styles"
+  - Adicionar "node_modules/bootstrap/dist/css/bootstrap.css"
+
 
 ## Development server
 
