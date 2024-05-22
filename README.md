@@ -126,6 +126,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
       Excluir
     </button>​
 
+### Directives (branch directives)
+
+1. Criando uma lista de contatos em app.component.ts
+  - criando um array de contatos
+  - Removendo o contato
+  - Ajustando o função para retornar uma lista
+  - Ajustando o template para um valor do array (contatos[2])
+  
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

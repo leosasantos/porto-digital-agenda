@@ -9,14 +9,28 @@ import { Contato } from './models/contato';
 export class AppComponent {
   title = 'porto-digital-agenda';
 
-  contato: Contato = {
-    nome: "Fulano de Tal",
-    telefone: "81123456789",
-    email: "fulano@empresa.com.br",
-    tipo: 1
-  }
+  contatos: Contato[] = [
+    {
+      nome: "Fulano de Tal",
+      telefone: "81123456789",
+      email: "fulano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Beltrano de Tal",
+      telefone: "81234567981",
+      email: "beltrano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Ciclano de Tal",
+      telefone: "81345678912",
+      email: "ciclano@empresa.com.br",
+      tipo: 1
+    }
+  ];
 
-  getContato(): Contato {
-    return this.contato;
+  getContatos(): Contato[] {
+    return this.contatos;
   }
 }
