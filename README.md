@@ -2,6 +2,27 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
+## Roteiro das aulas
+
+### Criação inicial do projeto
+
+1. Criar projeto do github
+
+  - Configurar chaves ssh
+  - Criar repositório inicial
+
+2. Criar projeto com angular cli
+
+  - ng new porto-digital-agenda --no-standalone --routing --ssr=false
+
+3. Realizando commit inicial
+
+  - git add .
+  - git commit -m ?Initial commit?
+  - git remote add origin <remote_repository_url>
+  - git push -u origin master
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
