@@ -4,12 +4,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Roteiro das aulas
 
-### Criação inicial do projeto
+### Criaï¿½ï¿½o inicial do projeto
 
 1. Criar projeto do github
 
   - Configurar chaves ssh
-  - Criar repositório inicial
+  - Criar repositÃ³rio inicial
 
 2. Criar projeto com angular cli
 
@@ -18,7 +18,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 3. Realizando commit inicial
 
   - git add .
-  - git commit -m ?Initial commit?
+  - git commit -m "Initial commit"
   - git remote add origin <remote_repository_url>
   - git push -u origin master
 
