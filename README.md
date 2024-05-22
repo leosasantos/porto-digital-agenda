@@ -28,7 +28,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1. Instalar biblioteca
 
-  - npm install bootstrap
+  - ```npm install bootstrap```
 
 2. Configurar css no angular.json
 
@@ -39,7 +39,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1. Criando card
 
-  - ng g c components/card
+  - ```ng g c components/card```
   - Copiar código do card do bootstrap (https://getbootstrap.com/docs/4.0/components/card/) para card.component.html
   - Ajustar código para contatos
   - Ajustar app.component.html
@@ -47,25 +47,29 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### Input/output em componentes (branch input-output-components)
 
 1. Criar interface contato com nome, telefone, email e tipo
-  - ng g i models/contato
+  - ```ng g i models/contato```
   - Adicionar os tipos na inteface
 
+```
     nome: string;
     telefone: string;
     email: string;
     tipo: number; // nacional -> 1 e internacional -> 2
+```
 
 2. Configurando o card para Input
-  - Adicionando "@Input() contato: Contato|null = null;" em card.component.ts
+  - Adicionando ```@Input() contato: Contato|null = null;``` em card.component.ts
   - Usando o contato no template (card.component.html)
 
+```
     <h5 class="card-title">{{ contato?.nome }}</h5>
     <p class="card-text">Telefone: {{ contato?.telefone }}</p>
     <p class="card-text">Email: {{ contato?.email }}</p>
+```
 
 3. Usando o novo card com Input
   - Definindo um contato em app.component.ts
-
+```
     contato: Contato = {
       nome: "Fulano de Tal",
       telefone: "81123456789",
@@ -76,21 +80,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     getContato(): Contato {
       return this.contato;
     }
+```
 
   - Usando no contato no card em app.component.html
-    <app-card [contato]="contato"></app-card>
+    ```<app-card [contato]="contato"></app-card>```
 
 ### Data binding (branch data-binding)
 
 1. Interpolação
   - Observar que já foi usado em card.component.html para os dados
+```
     {{ contato?.nome }}
     {{ contato?.telefone }}
     {{ contato?.email }}
-
+```
 2. Property Binding​
   - Criar a rotina em card.component.ts
-
+```
     isContatoInternaciona(){
       if(this.contato?.tipo == 1){
         return false;
@@ -98,9 +104,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
         return true;
       }
     }
-
+```
   - Criar a div de informação de contato internacional
-
+```
     <div>
       <!-- https://icons.getbootstrap.com/icons/pin-map-fill/ -->
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map-fill" viewBox="0 0 16 16">
@@ -109,17 +115,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
       </svg>
       Contato internacional
     </div>
-
-  - Adicionar [hidden]="isContatoInternaciona()" na div para controlar sua exibição
+```
+  - Adicionar ```[hidden]="isContatoInternaciona()"``` na div para controlar sua exibição
 
 3. Event Binding
   - Criar a rotina de onClick no card.component.ts
-  
+  ```
     onClick() {​
       alert('botão clicado!');​
     }
-  
+  ```
   - Criar botão para acionar o evento em card.component.html
+```
     <button class="btn btn-primary" (click)="onClick()">
       <!-- https://icons.getbootstrap.com/icons/trash3-fill/ -->
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -127,30 +134,30 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
       </svg>
       Excluir
     </button>​
-
+```
 ### Directives (branch directives)
 
 1. Criando uma lista de contatos em app.component.ts
   - criando um array de contatos
   - Removendo o contato
   - Ajustando o função para retornar uma lista
-  - Ajustando o template para um valor do array (contatos[2])
+  - Ajustando o template para um valor do array (```contatos[2]```)
 
 2. Criando uma container para listar
   - Adicionando uma div container no component.html
-
+```
     <div class="container" style="display: flex"></div>
-
+```
   - Exibindo mais de um card em app.component.html
-
+```
     <app-card [contato]="contatos[0]"></app-card>
     <app-card [contato]="contatos[1]"></app-card>
     <app-card [contato]="contatos[2]"></app-card>
-
+```
   - Ajustando style do card para listar
-
+```
     style="width: 20rem; height: 13rem; margin: 1rem"
-
+```
 
   
 
