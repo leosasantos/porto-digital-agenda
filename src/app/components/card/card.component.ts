@@ -8,4 +8,16 @@ import { Contato } from '../../models/contato';
 })
 export class CardComponent {
   @Input() contato: Contato|null = null;
+
+  isContatoInternaciona(){
+    if(this.contato?.tipo == 1){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  onClick() {​
+    alert('botão clicado!');​
+  }
 }
