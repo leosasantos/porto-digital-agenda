@@ -159,7 +159,25 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     style="width: 20rem; height: 13rem; margin: 1rem"
 ```
 
-  
+3. Listar componentes com @for
+
+  - Atualizar o app.component.ts com o @for
+
+```
+@for (contato of contatos; track $index) {
+  <app-card [contato]="contato"></app-card>
+}
+```
+
+4. Exibir informação de contato internacional com @if
+
+  - Atualizar o componente card (card.component.html) com @if
+
+```
+    @if (!isContatoInternaciona()) {
+      <!-- https://icons.getbootstrap.com/icons/pin-map-fill/ -->
+      <div>
+```
 
 ## Development server
 
