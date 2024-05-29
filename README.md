@@ -260,6 +260,39 @@ contato.service.ts
 @for (contato of getContatos(); track $index) {
 ```
 
+### Rotas (branch router)
+
+1. Criar a rota listar
+  - Criar o componente listar contatos
+```
+ng g c pages/listar 
+```
+  
+  - Copiar o conteudo do listar de app.component.ts para .componennt.ts
+
+```
+export class ListarComponent {
+
+  constructor(
+    private contatosService: ContatosService
+  ){ }
+
+  getContatos(): Contato[] {
+    return this.contatosService.recuperarContatos();
+  }
+
+}
+```
+
+ - Copiar o conteudo do container de app.component.html para .componennt.html
+
+ ```
+ @for (contato of getContatos(); track $index) {
+  <app-card [contato]="contato"></app-card>
+}
+ ```
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
