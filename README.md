@@ -333,9 +333,11 @@ const routes: Routes = [
 </div>
 ```
 
-- Adicionar os links
-
-
+- Adicionar os links em app.component.html
+```
+    <li class="nav-item"><a routerLink="/listar" class="nav-link">Listar</a></li>
+    <li class="nav-item"><a routerLink="/incluir" class="nav-link">Incluir</a></li>
+```
 
 
 ## Development server
