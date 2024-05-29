@@ -284,13 +284,58 @@ export class ListarComponent {
 }
 ```
 
- - Copiar o conteudo do container de app.component.html para .componennt.html
+ - Copiar o conteudo do container de app.component.html para listar.componennt.html
 
  ```
- @for (contato of getContatos(); track $index) {
-  <app-card [contato]="contato"></app-card>
-}
+<div style="display: flex">
+  @for (contato of getContatos(); track $index) {
+    <app-card [contato]="contato"></app-card>
+  }
+</div>
  ```
+
+2. Criar o componente incluir
+
+```
+ng g c pages/incluir
+```
+
+3. Adicionando menu em app.component.ts
+
+```
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Agenda Telefônica</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="#" class="nav-link">Listar</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Incluir</a></li>
+    </ul>
+  </header>
+```
+
+4. Criando rotas 
+  - Criar rotas em app.routing.module.ts
+```
+const routes: Routes = [
+  { path: 'listar', component: ListarComponent },
+  { path: 'incluir', component: IncluirComponent },
+  { path: '', redirectTo: '/listar', pathMatch: 'full'}
+];
+```  
+
+  - Adicionar renderização em app.component.html
+```
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+```
+
+- Adicionar os links
+
+
 
 
 ## Development server

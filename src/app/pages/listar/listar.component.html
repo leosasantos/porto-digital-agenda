@@ -1,3 +1,5 @@
-@for (contato of getContatos(); track $index) {
-  <app-card [contato]="contato"></app-card>
-}
+<div style="display: flex">
+  @for (contato of getContatos(); track $index) {
+    <app-card [contato]="contato"></app-card>
+  }
+</div>
