@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Roteiro das aulas
 
-### Criação inicial do projeto
+### Criação inicial do projeto (branch master)
 
 1. Criar projeto do github
 
@@ -13,20 +13,22 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 2. Criar projeto com angular cli
 
-  - ng new porto-digital-agenda --no-standalone --routing --ssr=false
+  - ```ng new porto-digital-agenda --no-standalone --routing --ssr=false```
 
 3. Realizando commit inicial
 
-  - git add .
-  - git commit -m "Initial commit"
-  - git remote add origin <remote_repository_url>
-  - git push -u origin master
+  ```
+  git add .
+  git commit -m "Initial commit"
+  git remote add origin <remote_repository_url>
+  git push -u origin master
+  ```
 
 ### Configurando bootstrap
 
 1. Instalar biblioteca
 
-  - npm install bootstrap
+  - ```npm install bootstrap```
 
 2. Configurar css no angular.json
 
@@ -37,12 +39,305 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1. Criando card
 
-  - ng g c components/card
+  - ```ng g c components/card```
   - Copiar código do card do bootstrap (https://getbootstrap.com/docs/4.0/components/card/) para card.component.html
   - Ajustar código para contatos
   - Ajustar app.component.html
 
+### Input/output em componentes (branch input-output-components)
 
+1. Criar interface contato com nome, telefone, email e tipo
+  - ```ng g i models/contato```
+  - Adicionar os tipos na inteface
+
+```
+    nome: string;
+    telefone: string;
+    email: string;
+    tipo: number; // nacional -> 1 e internacional -> 2
+```
+
+2. Configurando o card para Input
+  - Adicionando ```@Input() contato: Contato|null = null;``` em card.component.ts
+  - Usando o contato no template (card.component.html)
+
+```
+    <h5 class="card-title">{{ contato?.nome }}</h5>
+    <p class="card-text">Telefone: {{ contato?.telefone }}</p>
+    <p class="card-text">Email: {{ contato?.email }}</p>
+```
+
+3. Usando o novo card com Input
+  - Definindo um contato em app.component.ts
+```
+    contato: Contato = {
+      nome: "Fulano de Tal",
+      telefone: "81123456789",
+      email: "fulano@empresa.com.br",
+      tipo: 1
+    }
+
+    getContato(): Contato {
+      return this.contato;
+    }
+```
+
+  - Usando no contato no card em app.component.html
+    ```<app-card [contato]="contato"></app-card>```
+
+### Data binding (branch data-binding)
+
+1. Interpolação
+  - Observar que já foi usado em card.component.html para os dados
+```
+    {{ contato?.nome }}
+    {{ contato?.telefone }}
+    {{ contato?.email }}
+```
+2. Property Binding​
+  - Criar a rotina em card.component.ts
+```
+    isContatoInternaciona(){
+      if(this.contato?.tipo == 1){
+        return false;
+      } else {
+        return true;
+      }
+    }
+```
+  - Criar a div de informação de contato internacional
+```
+    <div>
+      <!-- https://icons.getbootstrap.com/icons/pin-map-fill/ -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8z"/>
+        <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
+      </svg>
+      Contato internacional
+    </div>
+```
+  - Adicionar ```[hidden]="isContatoInternaciona()"``` na div para controlar sua exibição
+
+3. Event Binding
+  - Criar a rotina de onClick no card.component.ts
+  ```
+    onClick() {​
+      alert('botão clicado!');​
+    }
+  ```
+  - Criar botão para acionar o evento em card.component.html
+```
+    <button class="btn btn-primary" (click)="onClick()">
+      <!-- https://icons.getbootstrap.com/icons/trash3-fill/ -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+      </svg>
+      Excluir
+    </button>​
+```
+### Directives (branch directives)
+
+1. Criando uma lista de contatos em app.component.ts
+  - criando um array de contatos
+  - Removendo o contato
+  - Ajustando o função para retornar uma lista
+  - Ajustando o template para um valor do array (```contatos[2]```)
+
+```
+  contatos: Contato[] = [
+    {
+      nome: "Fulano de Tal",
+      telefone: "81123456789",
+      email: "fulano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Beltrano de Tal",
+      telefone: "81234567981",
+      email: "beltrano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Ciclano de Tal",
+      telefone: "81345678912",
+      email: "ciclano@empresa.com.br",
+      tipo: 1
+    }
+  ];
+
+  getContatos(): Contato[] {
+    return this.contatos;
+  }
+```
+
+2. Criando uma container para listar
+  - Adicionando uma div container no component.html
+```
+    <div class="container" style="display: flex"></div>
+```
+  - Exibindo mais de um card em app.component.html
+```
+    <app-card [contato]="contatos[0]"></app-card>
+    <app-card [contato]="contatos[1]"></app-card>
+    <app-card [contato]="contatos[2]"></app-card>
+```
+  - Ajustando style do card para listar em card.component.html
+```
+    <div class="card" style="width: 20rem; height: 13rem; margin: 1rem">
+```
+
+3. Listar componentes com @for
+
+  - Atualizar o app.component.ts com o @for
+
+```
+@for (contato of contatos; track $index) {
+  <app-card [contato]="contato"></app-card>
+}
+```
+
+4. Exibir informação de contato internacional com @if
+
+  - Atualizar o componente card (card.component.html) com @if
+
+```
+    @if (!isContatoInternaciona()) {
+      <!-- https://icons.getbootstrap.com/icons/pin-map-fill/ -->
+      <div>
+      ...
+      </div>
+    }
+```
+
+### Services (branch service)
+
+1. Criar um serviço para recuperar contatos
+
+  - ``` ng g s services/contatos ```
+  - Transferindo o array de contatos de app.componnent.ts para o service e implementando o serviço de recuperar contatos
+
+```
+contato.service.ts
+  contatos: Contato[] = [
+    {
+      nome: "Fulano de Tal",
+      telefone: "81123456789",
+      email: "fulano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Beltrano de Tal",
+      telefone: "81234567981",
+      email: "beltrano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Ciclano de Tal",
+      telefone: "81345678912",
+      email: "ciclano@empresa.com.br",
+      tipo: 1
+    }
+  ];
+
+  public recuperarContatos(): Contato[] {
+    return this.contatos;
+  }
+```
+  
+  - Removendo o array e adicionando o serviço no construtor e sua chamada em app.componnent.ts
+```
+  constructor(
+    private contatosService: ContatosService
+  ){ }
+
+  getContatos(): Contato[] {
+    return this.contatosService.recuperarContatos();
+  }
+```
+
+-- Ajustando o app.component.html para chamar a nova rotina
+```
+@for (contato of getContatos(); track $index) {
+```
+
+### Rotas (branch router)
+
+1. Criar a rota listar
+  - Criar o componente listar contatos
+```
+ng g c pages/listar 
+```
+  
+  - Copiar o conteudo do listar de app.component.ts para .componennt.ts
+
+```
+export class ListarComponent {
+
+  constructor(
+    private contatosService: ContatosService
+  ){ }
+
+  getContatos(): Contato[] {
+    return this.contatosService.recuperarContatos();
+  }
+
+}
+```
+
+ - Copiar o conteudo do container de app.component.html para listar.componennt.html
+
+ ```
+<div style="display: flex">
+  @for (contato of getContatos(); track $index) {
+    <app-card [contato]="contato"></app-card>
+  }
+</div>
+ ```
+
+2. Criar o componente incluir
+
+```
+ng g c pages/incluir
+```
+
+3. Adicionando menu em app.component.ts
+
+```
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Agenda Telefônica</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="#" class="nav-link">Listar</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Incluir</a></li>
+    </ul>
+  </header>
+```
+
+4. Criando rotas 
+  - Criar rotas em app.routing.module.ts
+```
+const routes: Routes = [
+  { path: 'listar', component: ListarComponent },
+  { path: 'incluir', component: IncluirComponent },
+  { path: '', redirectTo: '/listar', pathMatch: 'full'}
+];
+```  
+
+  - Adicionar renderização em app.component.html
+```
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+```
+
+- Adicionar os links em app.component.html
+```
+    <li class="nav-item"><a routerLink="/listar" class="nav-link">Listar</a></li>
+    <li class="nav-item"><a routerLink="/incluir" class="nav-link">Incluir</a></li>
+```
 
 
 ## Development server
