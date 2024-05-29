@@ -255,14 +255,14 @@ contato.service.ts
   }
 ```
 
--- Ajustando o app.component.html para chamar a nova rotina
+2. Ajustando o app.component.html para chamar a nova rotina
 ```
 @for (contato of getContatos(); track $index) {
 ```
 
 ### Rotas (branch router)
 
-1. Criar a rota listar
+1. Criar o componente listar
   - Criar o componente listar contatos
 ```
 ng g c pages/listar 
@@ -317,7 +317,7 @@ ng g c pages/incluir
 ```
 
 4. Criando rotas 
-  - Criar rotas em app.routing.module.ts
+  - Criar rotas em app-routing.module.ts
 ```
 const routes: Routes = [
   { path: 'listar', component: ListarComponent },
@@ -333,7 +333,7 @@ const routes: Routes = [
 </div>
 ```
 
-- Adicionar os links em app.component.html
+  - Adicionar os links em app.component.html
 ```
     <li class="nav-item"><a routerLink="/listar" class="nav-link">Listar</a></li>
     <li class="nav-item"><a routerLink="/incluir" class="nav-link">Incluir</a></li>
