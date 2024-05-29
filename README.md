@@ -143,6 +143,33 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - Ajustando o função para retornar uma lista
   - Ajustando o template para um valor do array (```contatos[2]```)
 
+```
+  contatos: Contato[] = [
+    {
+      nome: "Fulano de Tal",
+      telefone: "81123456789",
+      email: "fulano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Beltrano de Tal",
+      telefone: "81234567981",
+      email: "beltrano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Ciclano de Tal",
+      telefone: "81345678912",
+      email: "ciclano@empresa.com.br",
+      tipo: 1
+    }
+  ];
+
+  getContatos(): Contato[] {
+    return this.contatos;
+  }
+```
+
 2. Criando uma container para listar
   - Adicionando uma div container no component.html
 ```
@@ -154,9 +181,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     <app-card [contato]="contatos[1]"></app-card>
     <app-card [contato]="contatos[2]"></app-card>
 ```
-  - Ajustando style do card para listar
+  - Ajustando style do card para listar em card.component.html
 ```
-    style="width: 20rem; height: 13rem; margin: 1rem"
+    <div class="card" style="width: 20rem; height: 13rem; margin: 1rem">
 ```
 
 3. Listar componentes com @for
