@@ -204,6 +204,60 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     @if (!isContatoInternaciona()) {
       <!-- https://icons.getbootstrap.com/icons/pin-map-fill/ -->
       <div>
+      ...
+      </div>
+    }
+```
+
+### Services (branch service)
+
+1. Criar um serviço para recuperar contatos
+
+  - ``` ng g s services/contatos ```
+  - Transferindo o array de contatos de app.componnent.ts para o service e implementando o serviço de recuperar contatos
+
+```
+contato.service.ts
+  contatos: Contato[] = [
+    {
+      nome: "Fulano de Tal",
+      telefone: "81123456789",
+      email: "fulano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Beltrano de Tal",
+      telefone: "81234567981",
+      email: "beltrano@empresa.com.br",
+      tipo: 2
+    },
+    {
+      nome: "Ciclano de Tal",
+      telefone: "81345678912",
+      email: "ciclano@empresa.com.br",
+      tipo: 1
+    }
+  ];
+
+  public recuperarContatos(): Contato[] {
+    return this.contatos;
+  }
+```
+  
+  - Removendo o array e adicionando o serviço no construtor e sua chamada em app.componnent.ts
+```
+  constructor(
+    private contatosService: ContatosService
+  ){ }
+
+  getContatos(): Contato[] {
+    return this.contatosService.recuperarContatos();
+  }
+```
+
+-- Ajustando o app.component.html para chamar a nova rotina
+```
+@for (contato of getContatos(); track $index) {
 ```
 
 ## Development server

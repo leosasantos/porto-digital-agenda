@@ -1,5 +1,5 @@
 <div class="container" style="display: flex">
-@for (contato of contatos; track $index) {
+@for (contato of getContatos(); track $index) {
   <app-card [contato]="contato"></app-card>
 }
 </div>
