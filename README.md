@@ -341,8 +341,23 @@ const routes: Routes = [
     <li class="nav-item"><a routerLink="/listar" class="nav-link">Listar</a></li>
     <li class="nav-item"><a routerLink="/incluir" class="nav-link">Incluir</a></li>
 ```
-
-
+5. Criando Formulário Reativo (Reactive Form) 
+  - Ir em app.module.ts e incluir ReactiveFormsModule nos imports.
+```
+import {ReactiveFormsModule} from '@angular/forms';
+...
+@NgModule({
+...
+  imports: [
+...
+    // outros imports ...
+    ReactiveFormsModule,
+  ],
+...
+})
+export class AppModule {}
+``` 
+    
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
