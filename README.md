@@ -357,7 +357,28 @@ import {ReactiveFormsModule} from '@angular/forms';
 ...
 })
 export class AppModule {}
-``` 
+```
+  - Ir em incluir.component.ts e incluir FormGroup e FormControl nos imports.
+```
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-incluir',
+  templateUrl: './incluir.component.html',
+  styleUrl: './incluir.component.css'
+})
+export class IncluirComponent {
+
+  form = new FormGroup({
+    nome: new FormControl(),
+    telefone: new FormControl(),
+    email: new FormControl(),
+    tipo: new FormControl(),
+  });
+
+}
+```
     
 ## Development server
 
