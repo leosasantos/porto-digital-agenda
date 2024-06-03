@@ -379,6 +379,30 @@ export class IncluirComponent {
 
 }
 ```
+  - Ir em incluir.component.html e incluir o texto abaixo, o nosso componente de inclusão ficará visível, apesar de pouco elegante.
+```
+
+<form [formGroup]="form">    
+  <label>Nome:</label>
+  <input type="text" formControlName="nome">
+
+  <label>Telefone:</label>
+  <input type="number" formControlName="telefone">
+
+  <label>Email:</label>
+  <input type="text" formControlName="email">
+
+  <label>Tipo:</label>
+  <select formControlName="tipo">
+    <option value="1">Nacional</option>
+    <option value="2">Internacional</option>
+  </select>
+
+  <button type="submit">Incluir</button>
+  <button>Limpar</button>
+  
+</form>
+```
     
 ## Development server
 
