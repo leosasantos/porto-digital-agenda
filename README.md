@@ -341,7 +341,8 @@ const routes: Routes = [
     <li class="nav-item"><a routerLink="/listar" class="nav-link">Listar</a></li>
     <li class="nav-item"><a routerLink="/incluir" class="nav-link">Incluir</a></li>
 ```
-5. Criando Formulário Reativo (Reactive Form) 
+### Formulários (Reactive Forms)
+1. Criando Formulário Reativo (Reactive Form) 
   - Ir em app.module.ts e incluir ReactiveFormsModule nos imports.
 ```
 import {ReactiveFormsModule} from '@angular/forms';
