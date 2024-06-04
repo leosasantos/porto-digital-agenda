@@ -482,14 +482,20 @@ export class IncluirComponent {
                     email: this.form.value.email,
                     tipo: +this.form.value.tipo,
     }
-    this.contatosService.inserirContato(contato);    
+    this.contatosService.inserirContato(contato);
+    this.form.reset();    
   }
 
 }
 ```
+  - Ir em contato.service.ts e evoluí-la, adicionando a funcionalidade de inserção. Basta voltar na listagem para observar que o contato foi incluído. 
+```
+public inserirContato(contado: Contato){​
 
+this.contatos.push(contado);​
+}
+```
 
-    
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
