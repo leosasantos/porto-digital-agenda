@@ -32,4 +32,9 @@ export class ContatosService {
   public recuperarContatos(): Contato[] {
     return this.contatos;
   }
+
+  public inserirContato(contado: Contato){
+    this.contatos.push(contado);
+
+  }
 }
