@@ -10,19 +10,19 @@ export class ContatosService {
 
   private contatos: Contato[] = [
     {
-      nome: "Fulano de Tal",
+      nome: "fulano de tal",
       telefone: "81123456789",
       email: "fulano@empresa.com.br",
       tipo: 2
     },
     {
-      nome: "Beltrano de Tal",
+      nome: "beltrano de tal",
       telefone: "81234567981",
       email: "beltrano@empresa.com.br",
       tipo: 2
     },
     {
-      nome: "ciclano de Tal",
+      nome: "ciclano de tal",
       telefone: "81345678912",
       email: "ciclano@empresa.com.br",
       tipo: 1

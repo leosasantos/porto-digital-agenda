@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'capitalize'})​
+@Pipe({ name: 'capitalize' })
 
 export class CapitalizePipe implements PipeTransform {
 
@@ -13,7 +13,7 @@ export class CapitalizePipe implements PipeTransform {
 
       result += this.capitalize(v) + ' ';
 
-    }​
+    }
 
     return result;
 
@@ -21,9 +21,9 @@ export class CapitalizePipe implements PipeTransform {
 
   private capitalize(value: string) {
 
-    return value.substr(0, 1).toUpperCase() +
+    return value.substring(0, 1).toUpperCase() +
 
-      value.substr(1).toLowerCase();
+      value.substring(1).toLowerCase();
 
   }
 
