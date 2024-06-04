@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ContatosService } from '../../services/contatos.service';
 
-import { Contato } from '../../models/contato';
-
 @Component({
   selector: 'app-incluir',
   templateUrl: './incluir.component.html',
@@ -24,13 +22,13 @@ export class IncluirComponent {
   });
 
   onSubmit(){
-    let c  = {nome:this.form.value.nome,
-              telefone: this.form.value.telefone,
-              email: this.form.value.email,
-              tipo: +this.form.value.tipo,
+    let contato  = {nome:this.form.value.nome,
+                    telefone: this.form.value.telefone,
+                    email: this.form.value.email,
+                    tipo: +this.form.value.tipo,
     }
-    this.contatosService.inserirContato(c);
-    console.log(this.contatosService.recuperarContatos())
+    this.contatosService.inserirContato(contato);    
+    this.form.reset();
   }
 
 }

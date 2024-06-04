@@ -22,7 +22,7 @@ export class ContatosService {
       tipo: 2
     },
     {
-      nome: "Ciclano de Tal",
+      nome: "ciclano de Tal",
       telefone: "81345678912",
       email: "ciclano@empresa.com.br",
       tipo: 1

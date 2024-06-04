@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
 import { ListarComponent } from './pages/listar/listar.component';
 import { IncluirComponent } from './pages/incluir/incluir.component';
+import { CapitalizePipe } from './capitalize.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     ListarComponent,
-    IncluirComponent
+    IncluirComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
