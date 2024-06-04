@@ -495,6 +495,13 @@ public inserirContato(contado: Contato){​
 this.contatos.push(contado);​
 }
 ```
+### Pipes
+1. Criando seu pipe personalizado
+  - Ir no terminal e digitar o trecho abaixo para criar um pipe personalizado para colocar as letras maiúsculas.
+```
+$ ng g p capitalize
+```
+
 
 ## Development server
 
