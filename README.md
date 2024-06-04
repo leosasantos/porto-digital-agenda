@@ -441,6 +441,16 @@ export class IncluirComponent {
     </form>
 </div>
 ```
+  - Ir em incluir.component.html e adicionar a submissão do formulário para o modelo.
+```
+<button type="submit" class="btn btn-primary"(click)="onSubmit()">Incluir</button>
+```
+  - In em incluir.component.ts e observar apertando F12 no browser que ao submeter dados, os mesmos já estão disponpiveis no modelo.
+```
+  onSubmit(){
+    console.log(this.form.value)
+  }
+```
     
 ## Development server
 
