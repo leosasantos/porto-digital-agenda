@@ -403,6 +403,44 @@ export class IncluirComponent {
   
 </form>
 ```
+  - Ir em incluir.component.html e adicionar classes de estilo do Bootstrap, o nosso formulário ficará com um estilo bem melhor.
+```
+<div style="display: flex">
+    <form [formGroup]="form">
+        <div class="form-row">
+            <div class="col-12">
+                <label>Nome:</label>
+                <input type="text" class="form-control" formControlName="nome">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-12">
+                <label>Telefone:</label>
+                <input type="number" class="form-control" formControlName="telefone">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-12">
+                <label>Email:</label>
+                <input type="text" class="form-control" formControlName="email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-12">
+                <label>Tipo:</label>
+                <select formControlName="tipo" class="form-control form-select">
+                    <option value="1">Nacional</option>
+                    <option value="2">Internacional</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Incluir</button>
+        <button class="btn btn-secondary">Limpar</button>
+
+    </form>
+</div>
+```
     
 ## Development server
 
