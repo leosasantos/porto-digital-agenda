@@ -394,8 +394,8 @@ export class IncluirComponent {
 
   <label>Tipo:</label>
   <select formControlName="tipo">
-    <option value="1">Nacional</option>
-    <option value="2">Internacional</option>
+    <option value="2">Nacional</option>
+    <option value="1">Internacional</option>
   </select>
 
   <button type="submit">Incluir</button>
@@ -429,8 +429,8 @@ export class IncluirComponent {
             <div class="col-12">
                 <label>Tipo:</label>
                 <select formControlName="tipo" class="form-control form-select">
-                    <option value="1">Nacional</option>
-                    <option value="2">Internacional</option>
+                    <option value="2">Nacional</option>
+                    <option value="1">Internacional</option>
                 </select>
             </div>
         </div>
@@ -522,6 +522,11 @@ export class CapitalizePipe implements PipeTransform {
   }
 }
 
+```
+ - Por fim ir em card.component.html e acionar o pipe criado
+
+```
+<h5 class="card-title">{{ contato?.nome | capitalize}}</h5>
 ```
 
 ## Development server
