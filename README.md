@@ -3,7 +3,6 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6..
 
 ## Link do projeto para download
-https://serprogovbr-my.sharepoint.com/:u:/g/personal/leonardo_leal_serpro_gov_br/EelWNJ2VovJIubJAFGpj0qYBi4nnjTgkdbUlGi3RXMO-aw?e=hE18bc
 https://github.com/leosasantos/porto-digital-agenda/archive/refs/heads/router.zip
 
 
