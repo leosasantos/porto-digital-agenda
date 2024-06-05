@@ -1,6 +1,9 @@
 # PortoDigitalAgenda
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6..
+
+## Link do projeto para download
+https://serprogovbr-my.sharepoint.com/:u:/g/personal/leonardo_leal_serpro_gov_br/EelWNJ2VovJIubJAFGpj0qYBi4nnjTgkdbUlGi3RXMO-aw?e=hE18bc
 
 ## Roteiro das aulas
 
@@ -255,14 +258,14 @@ contato.service.ts
   }
 ```
 
--- Ajustando o app.component.html para chamar a nova rotina
+2. Ajustando o app.component.html para chamar a nova rotina
 ```
 @for (contato of getContatos(); track $index) {
 ```
 
 ### Rotas (branch router)
 
-1. Criar a rota listar
+1. Criar o componente listar
   - Criar o componente listar contatos
 ```
 ng g c pages/listar 
@@ -317,7 +320,7 @@ ng g c pages/incluir
 ```
 
 4. Criando rotas 
-  - Criar rotas em app.routing.module.ts
+  - Criar rotas em app-routing.module.ts
 ```
 const routes: Routes = [
   { path: 'listar', component: ListarComponent },
@@ -333,12 +336,198 @@ const routes: Routes = [
 </div>
 ```
 
-- Adicionar os links em app.component.html
+  - Adicionar os links em app.component.html
 ```
     <li class="nav-item"><a routerLink="/listar" class="nav-link">Listar</a></li>
     <li class="nav-item"><a routerLink="/incluir" class="nav-link">Incluir</a></li>
 ```
+### Formulários (Reactive Forms)
+1. Criando Formulário Reativo (Reactive Form) 
+  - Ir em app.module.ts e incluir ReactiveFormsModule nos imports.
+```
+import {ReactiveFormsModule} from '@angular/forms';
+...
+@NgModule({
+...
+  imports: [
+...
+    // outros imports ...
+    ReactiveFormsModule,
+  ],
+...
+})
+export class AppModule {}
+```
+  - Ir em incluir.component.ts e incluir FormGroup e FormControl nos imports.
+```
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
+@Component({
+  selector: 'app-incluir',
+  templateUrl: './incluir.component.html',
+  styleUrl: './incluir.component.css'
+})
+export class IncluirComponent {
+
+  form = new FormGroup({
+    nome: new FormControl(),
+    telefone: new FormControl(),
+    email: new FormControl(),
+    tipo: new FormControl(),
+  });
+
+}
+```
+  - Ir em incluir.component.html e incluir o texto abaixo, o nosso componente de inclusão ficará visível, apesar de pouco elegante.
+```
+
+<form [formGroup]="form">    
+  <label>Nome:</label>
+  <input type="text" formControlName="nome">
+
+  <label>Telefone:</label>
+  <input type="number" formControlName="telefone">
+
+  <label>Email:</label>
+  <input type="text" formControlName="email">
+
+  <label>Tipo:</label>
+  <select formControlName="tipo">
+    <option value="2">Nacional</option>
+    <option value="1">Internacional</option>
+  </select>
+
+  <button type="submit">Incluir</button>
+  <button>Limpar</button>
+  
+</form>
+```
+  - Ir em incluir.component.html e adicionar classes de estilo do Bootstrap, o nosso formulário ficará com um estilo bem melhor.
+```
+<div style="display: flex">
+    <form [formGroup]="form">
+        <div class="form-row">
+            <div class="col-12">
+                <label>Nome:</label>
+                <input type="text" class="form-control" formControlName="nome">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-12">
+                <label>Telefone:</label>
+                <input type="number" class="form-control" formControlName="telefone">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-12">
+                <label>Email:</label>
+                <input type="text" class="form-control" formControlName="email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-12">
+                <label>Tipo:</label>
+                <select formControlName="tipo" class="form-control form-select">
+                    <option value="2">Nacional</option>
+                    <option value="1">Internacional</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Incluir</button>
+        <button class="btn btn-secondary">Limpar</button>
+
+    </form>
+</div>
+```
+  - Ir em incluir.component.html e adicionar a submissão do formulário para o modelo.
+```
+<button type="submit" class="btn btn-primary"(click)="onSubmit()">Incluir</button>
+```
+  - Ir em incluir.component.ts e observar apertando F12 no browser que ao submeter dados, os mesmos já estão disponíveis no modelo.
+```
+  onSubmit(){
+    console.log(this.form.value)
+  }
+```
+  - Ir em incluir.component.ts e evoluí-la, criando o objeto JSON que representa um contato e enviando ele para o serviço de inserção que será criado.
+```
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ContatosService } from '../../services/contatos.service';
+
+@Component({
+  selector: 'app-incluir',
+  templateUrl: './incluir.component.html',
+  styleUrl: './incluir.component.css'
+})
+export class IncluirComponent {
+
+  constructor(
+    private contatosService: ContatosService
+  ){ }
+
+  form = new FormGroup({
+    nome: new FormControl(),
+    telefone: new FormControl(),
+    email: new FormControl(),
+    tipo: new FormControl(),
+    
+  });
+
+  onSubmit(){
+    let contato  = {nome:this.form.value.nome,
+                    telefone: this.form.value.telefone,
+                    email: this.form.value.email,
+                    tipo: +this.form.value.tipo,
+    }
+    this.contatosService.inserirContato(contato);
+    this.form.reset();    
+  }
+
+}
+```
+  - Ir em contato.service.ts e evoluí-la, adicionando a funcionalidade de inserção. Basta voltar na listagem para observar que o contato foi incluído. 
+```
+public inserirContato(contado: Contato){​
+
+this.contatos.push(contado);​
+}
+```
+### Pipes
+1. Criando seu pipe personalizado
+  - Ir no terminal e digitar o trecho abaixo para criar um pipe personalizado para colocar as letras maiúsculas.
+```
+$ ng g p capitalize
+```
+ - Observe que foi criado o arquivo capitalize.pipe.ts, nele coloque o seguinte conteudo
+```
+import { Pipe, PipeTransform } from '@angular/core';
+@Pipe({ name: 'capitalize' })
+
+export class CapitalizePipe implements PipeTransform {
+
+  transform(value: any, args?: any): any {
+    let result = '';
+    for (const v of value.split(' ')) {
+      result += this.capitalize(v) + ' ';
+    }
+    return result;
+  }
+
+  private capitalize(value: string) {
+    return value.substring(0, 1).toUpperCase() +
+      value.substring(1).toLowerCase();
+  }
+}
+
+```
+ - Por fim ir em card.component.html e acionar o pipe criado
+
+```
+<h5 class="card-title">{{ contato?.nome | capitalize}}</h5>
+```
 
 ## Development server
 
